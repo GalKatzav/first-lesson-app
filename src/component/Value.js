@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 export default function Value() {
   const [inpName, setInpName] = useState("");
+  const phoneRef = useRef();
+
   const onSub = (e) => {
     // מונע את הברירת מחדל של שיגור שיעשה ריטסטר לאפליקציה
     e.preventDefault();
-    alert(inpName);
+    // alert(inpName);
+    alert(phoneRef.current.value);
   };
   return (
     <div>
@@ -17,7 +20,7 @@ export default function Value() {
           className="form-control"
         />
         <label>Phone:</label>
-        <input type="text" className="form-control" />
+        <input ref={phoneRef} type="text" className="form-control" />
         <button className="btn btn-info mt-4">Add</button>
       </form>
     </div>
